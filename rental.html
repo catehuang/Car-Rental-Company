@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect"
+              href="https://fonts.googleapis.com">
+        <link rel="preconnect"
+              href="https://fonts.gstatic.com"
+              crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet"
+              href="rentalcar.css">
+        <script src="rentalcar.js"></script>
+        <title>Dodgy Brakes Car Rental</title>
+    </head>
+
+    <body>
+        <!--https://cars.usnews.com/-->
+        <header>
+            <p>Good Day ! Today is <span id="dateField"></span></p>
+            <figure>
+            <a href="index.html"><img src="img/logo.png"
+                     alt="company logo"
+                     id="companylogo"></a>
+            <!--https://editor.freelogodesign.org/-->
+            </figure>
+        </header>
+
+        <div id="container">
+            <form id="rentalForm"
+                  onsubmit="displayRentalInformation(); return false">
+                <div id="customerInformation">
+                    <div id="searchField">
+                        <h3 class="uppercase">Customer Information</h3>
+                        <label for="searchkey">Search Last Name</label>
+                        <input type="text"
+                               id="searchkey"
+                               placeholder="Enter Last Name"
+                               onkeyup="searchLastName(this.value);">
+                        <div id="displayName"></div>
+                    </div>
+
+                    <div id="displayClientInformation">
+                        <table id="ClientInformation">
+                            <tr>
+                                <td><label>Last Name</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="lastname"
+                                           required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>First Name</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="firstname"
+                                           required></td>
+                            </tr>
+                            <tr>
+                                <td><label>Address</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="address"
+                                           required></td>
+                            </tr>
+                            <tr>
+                                <td><label>State/Prov</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="state_prov"
+                                           required></td>
+                            </tr>
+                            <tr>
+                                <td><label>Email</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="email"
+                                           required></td>
+                            </tr>
+                            <tr>
+                                <td><label>Phone</label></td>
+                                <td><input type="text"
+                                           readonly
+                                           id="phone"
+                                           required></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="displayRentalChoices">
+                    <h3 class="uppercase">Rental Choices</h3>
+                    <table id="rentalchoices">
+                        <tr>
+                            <td>
+                                <figure>
+                                    <figcaption>
+                                        <input type="radio"
+                                               name="vehicle"
+                                               value="compact"
+                                               id="compact"
+                                               required>
+                                        <label for="compact">Compact $15/day</label>
+                                    </figcaption>
+                                    <img src="img/compact.jpg"
+                                         alt="Compact"
+                                         class="car">
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <figcaption>
+                                        <input type="radio"
+                                               name="vehicle"
+                                               value="midsize"
+                                               id="midsize">
+                                        <label for="midsize">Mid-size $20/day</label>
+                                    </figcaption>
+                                    <img src="img/midsize.jpg"
+                                         alt="Mid-size"
+                                         class="car">
+                                </figure>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <figure>
+                                    <figcaption>
+                                        <input type="radio"
+                                               name="vehicle"
+                                               value="luxury"
+                                               id="luxury">
+                                        <label for="luxury">Luxury $35/day</label>
+                                    </figcaption>
+                                    <img src="img/luxury.jpg"
+                                         alt="Luxury"
+                                         class="car">
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <figcaption>
+                                        <input type="radio"
+                                               name="vehicle"
+                                               value="vantruck"
+                                               id="vantruck">
+                                        <label for="vantruck">Van/Truck $40/day</label>
+                                    </figcaption>
+                                    <img src="img/truck.jpg"
+                                         alt="Truck"
+                                         class="car">
+                                </figure>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="additionalquip">
+                        <tr>
+                            <th>Additional Equipments</th>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"
+                                       name="rack" id="rack"><label for="rack">Roof Rack or Bicycle Rack extra $5/day</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"
+                                       name="gps" id="gps"><label for="gps">GPS extra $10 </label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"
+                                       name="childseat" id="childseat"><label for="childseat">Child Seat free</label></td>
+                        </tr>
+                    </table>
+                    <div id="renteddays">
+                        <label for="days">Rent for </label>
+                        <input type="number"
+                               id="days"
+                               min="1"
+                               max="30"
+                               onblur="checknumber(this);"
+                               required>&nbsp;&nbsp;&nbsp;&nbsp;Days
+                    </div>
+                    <div id="rentnow">
+                        <input type="submit"
+                               value="Rent Now">
+                    </div>
+                </div>
+            </form>
+
+            <div id="displayRentalInformation">
+                <h4>Merci/ Thank you</h4>
+                <h3 class="uppercase">Rental Information</h3>
+                <table id="rentalInformation"></table>
+            </div>
+        </div>
+        <footer>
+            <div>
+                Dodgy Brakes Car Rental
+                &nbsp;&nbsp;&verbar;&nbsp;&nbsp;<a href="#"
+                   class="linkstyle">Email us</a>
+                &nbsp;&nbsp;&verbar;&nbsp;&nbsp;&phone; 1-403-123-4567
+                &nbsp;&nbsp;&verbar;&nbsp;&nbsp;698 Eau Claire Ave SW, Calgary, AB
+            </div>
+        </footer>
+    </body>
+
+</html>
